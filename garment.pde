@@ -135,12 +135,12 @@ class Garment {
   if (isPeplumShown) tmPeplum.render(); 
  }
  
-<<<<<<< HEAD
+
  void toggleSleeves() {
    areSleevesShown = !areSleevesShown;
-=======
+
  void togglePeplum() {
->>>>>>> added togglePeplum
+  isPeplumShown = !isPeplumShown;
  }
   
 }
