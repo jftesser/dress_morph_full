@@ -134,5 +134,9 @@ class Garment {
   if (areSleevesShown) tmSleeves.render();
   if (isPeplumShown) tmPeplum.render(); 
  }
+ 
+ void toggleSleeves() {
+   areSleevesShown = !areSleevesShown;
+ }
   
 }
