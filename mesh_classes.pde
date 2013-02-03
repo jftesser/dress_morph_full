@@ -150,6 +150,40 @@ class TweenMesh {
       endShape();
     }
   }
+  
+  void save(String name) {
+    int w = 72*60;
+    int h = 72*70;
+    PGraphics pdf = createGraphics(w, h, PDF, name+".pdf");
+    pdf.beginDraw();
+    for (int i=0; i<facedata1.length; i++) {
+
+      float[] a1 = facedata1[i][0];
+      float[] b1 = facedata1[i][1];
+      float[] c1 = facedata1[i][2];
+      float[] d1 = facedata1[i][3];
+
+      float[] a2 = facedata2[i][0];
+      float[] b2 = facedata2[i][1];
+      float[] c2 = facedata2[i][2];
+      float[] d2 = facedata2[i][3];
+
+      float[] a = getTween(a1, a2, tween_val);
+      float[] b = getTween(b1, b2, tween_val);
+      float[] c = getTween(c1, c2, tween_val);
+      float[] d = getTween(d1, d2, tween_val);
+
+      pdf.beginShape(QUADS);
+      pdf.vertex(a[0]*2.83464567, h-a[1]*2.83464567);
+      pdf.vertex(b[0]*2.83464567, h-b[1]*2.83464567);
+      pdf.vertex(c[0]*2.83464567, h-c[1]*2.83464567);
+      pdf.vertex(d[0]*2.83464567, h-d[1]*2.83464567);
+
+      pdf.endShape();
+    }
+    pdf.dispose();
+    pdf.endDraw();
+  }
 
   StateMesh getState() {
     int cnt = min(facedata1.length,facedata2.length);

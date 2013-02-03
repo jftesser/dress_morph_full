@@ -135,6 +135,18 @@ class Pattern {
   if (isPeplumShown) tmPeplum.render(); 
  }
  
+ void save() {
+   //1mm = 2.83464567pts
+   //1in = 72 pts
+   
+   
+   
+   tmBodice.save("bodice");
+   tmSkirt.save("skirt");
+   if (areSleevesShown) tmSleeves.save("sleeves");
+   if (isPeplumShown) tmPeplum.save("peplum"); 
+ }
+ 
  void toggleSleeves() {
    areSleevesShown = !areSleevesShown;
  }

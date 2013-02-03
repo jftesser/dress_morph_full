@@ -5,6 +5,8 @@ import toxi.geom.mesh.*;
 
 import toxi.processing.*;
 
+import processing.pdf.*;
+
 TriangleMesh mesh, mesh2;
 ToxiclibsSupport gfx;
 
@@ -71,6 +73,12 @@ currSize.render();
   //println(float(column_num)/20);
   //flats.render(lerpAmt);
   //shoe.render(lerpAmt);
+}
+
+void keyPressed() {
+ if (key == 's') {
+  currSize.savePattern();
+ } 
 }
 
 

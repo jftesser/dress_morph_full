@@ -174,9 +174,30 @@ class Garment {
 
  void toggleSleeves() {
    areSleevesShown = !areSleevesShown;
+ }
 
  void togglePeplum() {
   isPeplumShown = !isPeplumShown;
+ }
+ 
+ void syncPattern() {
+  pattern.setSkirtFullness(getSkirtFullness());
+  pattern.setSkirtLength(getSkirtLength());
+  pattern.setSkirtWaviness(getSkirtWaviness());
+
+  pattern.setBodiceSharpness(getBodiceSharpness());
+  pattern.setBodiceDepth(getBodiceDepth());
+
+  pattern.setSleeveLength(getSleeveLength());
+  pattern.setSleevePoofiness(getSleevePoofiness()); 
+  
+  pattern.isPeplumShown = isPeplumShown;
+  pattern.areSleevesShown = areSleevesShown;
+ }
+ 
+ void savePattern() {
+  syncPattern();
+  pattern.save(); 
  }
   
 }
