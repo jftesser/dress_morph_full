@@ -17,10 +17,35 @@ Garment currSize;
 Garment[] sizes;
 
 float displaceY=0;
+float rotateval=100;
+float rotatetarget = 180;
 
+ float SkirtFullness=0.5;
+ float SkirtLength=0.5;
+  
+ float BodiceSharpness=0.5;
+ float BodiceDepth=0.5;
+  
+ float SleeveLength=0.5;
+ float SleevePoofiness=0.5;
+
+boolean showWireframe = false;
+
+void init() {
+  // trick to make it possible to change the frame properties
+  frame.removeNotify(); 
+  // comment this out to turn OS chrome back on
+  frame.setUndecorated(true); 
+  // comment this out to not have the window "float"
+  frame.setAlwaysOnTop(true); 
+  //frame.setResizable(true);  
+  frame.addNotify(); 
+
+  super.init();
+}
 
 void setup() {
-  size(800, 600, OPENGL);
+  size(768, 1024, OPENGL);
   gfx=new ToxiclibsSupport(this);
 
 sizes = new Garment[6];
@@ -33,52 +58,89 @@ sizes[5] = new Garment("12");
 
 currSize = sizes[0];
 // test stuff
-  currSize.setSkirtFullness(0.5);
-  currSize.setSkirtLength(0.5);
-  currSize.setSkirtWaviness(0.5);
-  
-  currSize.setBodiceSharpness(0.5);
-  currSize.setBodiceDepth(0.5);
-  
-  currSize.setSleeveLength(0.5);
-  currSize.setSleevePoofiness(0.5);
+  updateGarment();
   smooth();
 }
 
 void draw() {
   background(250);
-  stroke(0);
+  
   lights();
   translate(width/2, height/2+displaceY, 0);
   rotateX(PI);
-  //rotateX(mouseY*0.01);
-  rotateY(PI);
-  //gfx.origin(new Vec3D(),200);
-  //noStroke();
-  //gfx.mesh(mesh,false,10);
+  rotateY(rotateval*PI/180);
 
-  //strokeWeight(3);
-  scale(.5);
-  //noFill();
+  if (showWireframe) {
+    stroke(0);
+    fill(255,255,255,200);
+  } else {
+    fill(55);
+    noStroke();
+  }
 
-  //displaceY = map(mouseY, 0, height, 0, 70);
+  scale(.7);
 
   //lerpAmt= map(mouseY, height, 0, 0, 1);
   //column_num = floor(map(mouseX, 0, width, 0, tween));
 
-fill(200);
 currSize.render();
   //columns[column_num].render(lerpAmt);
   //highs.render(float(column_num)/20);
   //println(float(column_num)/20);
   //flats.render(lerpAmt);
   //shoe.render(lerpAmt);
+  
+  rotateval = tween(rotatetarget, rotateval);
+}
+
+
+float tween(float target, float val) {
+  float dx = target - val;
+  float easing = .03;
+  if (abs(dx) > 1) {
+    val+=dx * easing;
+  }
+  return val;
+}
+
+void updateGarment() {
+  currSize.setSkirtFullness(SkirtFullness);
+  currSize.setSkirtLength(SkirtLength);
+  currSize.setSkirtWaviness(1);
+  
+  currSize.setBodiceSharpness(BodiceSharpness);
+  currSize.setBodiceDepth(BodiceDepth);
+  
+  currSize.setSleeveLength(SleeveLength);
+  currSize.setSleevePoofiness(SleevePoofiness);
 }
 
 void keyPressed() {
  if (key == 's') {
   currSize.savePattern();
  } 
+ if (key == 'w') {
+   showWireframe = !showWireframe;
+ }
+ 
+ if (key == '1') {
+   currSize = sizes[0];
+ }
+ if (key == '2') {
+   currSize = sizes[1];
+ }
+ if (key == '3') {
+   currSize = sizes[2];
+ }
+ if (key == '4') {
+   currSize = sizes[3];
+ }
+ if (key == '5') {
+   currSize = sizes[4];
+ }
+ if (key == '6') {
+   currSize = sizes[5];
+ }
 }
 
 
