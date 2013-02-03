@@ -154,6 +154,17 @@ class TweenMesh {
   void save(String name) {
     int w = 72*60;
     int h = 72*70;
+    
+    if (name.equals("bodice")) {
+     w = 72*30;
+     h = 72*40; 
+    } else if (name.equals("peplum")) {
+      w = 72*28;
+      h = 72*20;
+    } else if (name.equals("sleeves")) {
+      w = 72*29;
+      h = 72*26;
+    }
     PGraphics pdf = createGraphics(w, h, PDF, name+".pdf");
     pdf.beginDraw();
     for (int i=0; i<facedata1.length; i++) {
