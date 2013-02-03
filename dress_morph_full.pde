@@ -202,6 +202,9 @@ void keyPressed() {
  if (key == 'w') {
    showWireframe = !showWireframe;
  }
+ if (key == '0') {
+   rotatetarget = 180;
+ }
  
  if (key == '1') {
    currSize = sizes[0];

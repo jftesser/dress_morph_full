@@ -32,6 +32,7 @@ void openDiyPanel() {
   sizebutton.setState(false);
   buybutton.setState(false);
   showPattern = true;
+  currSize.savePattern();
 }
 
 void closeDiyPanel() {
