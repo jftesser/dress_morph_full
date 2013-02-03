@@ -123,8 +123,8 @@ class TweenMesh {
   }
 
   void render() {
-
-    for (int i=0; i<facedata1.length; i++) {
+    int cnt = min(facedata1.length,facedata2.length);
+    for (int i=0; i<cnt; i++) {
 
       float[] a1 = facedata1[i][0];
       float[] b1 = facedata1[i][1];
@@ -167,7 +167,8 @@ class TweenMesh {
     }
     PGraphics pdf = createGraphics(w, h, PDF, folder+"/"+name+".pdf");
     pdf.beginDraw();
-    for (int i=0; i<facedata1.length; i++) {
+    int cnt = min(facedata1.length,facedata2.length);
+    for (int i=0; i<cnt; i++) {
 
       float[] a1 = facedata1[i][0];
       float[] b1 = facedata1[i][1];
