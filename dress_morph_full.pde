@@ -139,6 +139,8 @@ void draw() {
     popMatrix();
   }
   
+  noLights();
+  
   sizepanelx = tween(targetsizepanelx, sizepanelx, .05);
   buypanelx = tween(targetbuypanelx, buypanelx, .05);
   displaceX = tween(targetdisplaceX, displaceX, .05);
