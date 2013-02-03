@@ -20,7 +20,7 @@ class Garment {
  String nSkirtShortNarrow = "skirtshortnarrow";
  
  // SLEEVES
- String nSleevesShort = "sleevesshort";
+ String nSleevesShort = "sleevesshortpoofy";
  String nSleevesLong = "sleeveslong";
  String nSleevesShortPoofy = "sleevesshortpoofy";
  String nSleevesLongPoofy = "sleeveslongpoofy";
@@ -83,7 +83,7 @@ class Garment {
  
  String makeFilename(String name) {
    String fn;
-   fn = nSize+"_"+name+".obj";
+   fn = "objs/"+nSize+"_"+name+".obj";
    
    return fn;
  }
