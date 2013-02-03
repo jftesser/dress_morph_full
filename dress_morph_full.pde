@@ -125,12 +125,15 @@ void keyPressed() {
  
  if (key == '1') {
    currSize = sizes[0];
+   updateGarment();
  }
  if (key == '2') {
    currSize = sizes[1];
+   updateGarment();
  }
  if (key == '3') {
    currSize = sizes[2];
+   updateGarment();
  }
  if (key == '4') {
    currSize = sizes[3];
