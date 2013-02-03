@@ -12,9 +12,12 @@ class ImageButton {
     y=iy;
     label=ilabel;
     
-    overimg = loadImage(label + "_over.png");
-    staticimg = loadImage(label + "_static.png");
-    activeimg = loadImage(label + "_active.png");
+   // overimg = loadImage(label + "_over.png");
+   
+   // staticimg = loadImage(label + "_static.png");
+   // activeimg = loadImage(label + "_active.png");
+    staticimg = loadImage(label + ".png");
+    activeimg = loadImage(label + "-active.png");
     
     currentimg = staticimg;
     
@@ -28,7 +31,7 @@ class ImageButton {
     over();
    // pressed();
     if(over && active==false) {
-     currentimg = overimg;
+    // currentimg = overimg;
     } else if (active){
      currentimg = activeimg;
     } else {
@@ -72,6 +75,10 @@ class ImageButton {
   void setState(boolean state) {
     active = state;
   }
+  void toggleState(){
+    active = !active;
+  }
+  
   boolean getState() {
     return active;
   }

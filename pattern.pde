@@ -30,8 +30,8 @@ class Pattern {
  String nPeplumTight = "peplumtight"; 
  
  // show flags
- Boolean areSleevesShown = true;
- Boolean isPeplumShown = true;
+ Boolean areSleevesShown = false;
+ Boolean isPeplumShown = false;
  
  // meshes
  // BODICE
