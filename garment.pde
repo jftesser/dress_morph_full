@@ -54,6 +54,9 @@ class Garment {
  // PEPLUM 
  TweenMesh tmPeplum;
  
+ // pattern
+ Pattern pattern;
+ 
  
  Garment(String _size) {
   nSize = _size;
@@ -75,7 +78,7 @@ class Garment {
   
   tmPeplum = new TweenMesh(makeFilename(nPeplumTight),makeFilename(nPeplumFull));
   
-  
+  pattern = new Pattern(nSize);
  }
  
  String makeFilename(String name) {
@@ -92,9 +95,17 @@ class Garment {
    tmSkirt.updateOnly();
  }
  
+ float getSkirtLength() {
+  return tmSkirtFullLength.tween_val; 
+ }
+ 
  void setSkirtFullness(float amt) { // 0-1. larger is fuller
    tmSkirt.setVal(amt);
    setPeplumPoofiness(amt);
+ }
+ 
+ float getSkirtFullness() {
+  return tmSkirt.tween_val; 
  }
  
  void setSkirtWaviness(float amt) { // 0-1, larger is wavier
@@ -104,18 +115,34 @@ class Garment {
    tmSkirt.updateOnly();
  }
  
+ float getSkirtWaviness() {
+  return tmSkirtWavinessLong.tween_val; 
+ }
+ 
  void setBodiceSharpness(float amt) { // 0-1, larger is toward boat/deep v
   tmBodiceBoatRound.setVal(1.0-amt);
   tmBodiceDeepVSweet.setVal(1.0-amt);
   tmBodice.updateOnly();
  }
  
+ float getBodiceSharpness() {
+  return tmBodiceBoatRound.tween_val; 
+ }
+ 
  void setBodiceDepth(float amt) { // 0-1, larger is toward sweetheart/deep v
   tmBodice.setVal(amt);
  }
  
+ float getBodiceDepth() {
+  return tmBodice.tween_val; 
+ }
+ 
  void setSleeveLength(float amt) { // 0-1, larger is longer
    tmSleeves.setVal(amt);
+ }
+ 
+ float getSleeveLength() {
+  return tmSleeves.tween_val; 
  }
  
  void setSleevePoofiness(float amt) { // 0-1, larger is poofier
@@ -124,8 +151,17 @@ class Garment {
    tmSleeves.updateOnly();
  }
  
+ 
+ float getSleevePoofiness() {
+  return tmSleevesShort.tween_val; 
+ }
+ 
  void setPeplumPoofiness(float amt) { // 0-1, larger is poofier, autocalled
    tmPeplum.setVal(amt);
+ }
+ 
+ float getPeplumPoofiness() {
+  return tmPeplum.tween_val; 
  }
  
  void render() {

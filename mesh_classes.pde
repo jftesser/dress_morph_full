@@ -24,9 +24,18 @@ class StateMesh {
         }
         if (l[0].equals("f")) {
           //doing quads
-          int[] f1 = {
+          int[] f1;
+          if (l.length>10) {
+          int[] tf1 = {
             int(l[1]), int(l[4]), int(l[7]), int(l[10])
           };
+          f1 = tf1;
+          } else {
+            int[] tf2 = {
+            int(l[1]), int(l[4]), int(l[7]), int(l[7])
+          };
+          f1 = tf2;
+          }
           f = (int[][]) expand(f, f.length+1);
           fd = (float[][][])expand(fd,fd.length+1);
           f[f.length-1] = f1;
@@ -143,7 +152,7 @@ class TweenMesh {
   }
 
   StateMesh getState() {
-    int cnt = facedata1.length;
+    int cnt = min(facedata1.length,facedata2.length);
     float[][][] fd = new float[cnt][4][3];
     for (int i=0; i<cnt; i++) {
       fd[i][0] = getTween(facedata1[i][0], facedata2[i][0], tween_val);
@@ -159,7 +168,7 @@ class TweenMesh {
   }
   
   void updateState() {
-    int cnt = facedata1.length;
+    int cnt = min(facedata1.length,facedata2.length);
     float[][][] fd = new float[cnt][4][3];
     for (int i=0; i<cnt; i++) {
       fd[i][0] = getTween(facedata1[i][0], facedata2[i][0], tween_val);
