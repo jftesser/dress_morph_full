@@ -16,12 +16,14 @@ Garment currSize;
 
 Garment[] sizes;
 
-float displaceY=0;
+float displaceY=400;
 float rotateval=100;
 float rotatetarget = 180;
 
- float SkirtFullness=0.5;
- float SkirtLength=0.5;
+ float SkirtFullness=0.3;
+ float targetSkirtFullness=0.5;
+ float SkirtLength=0.4;
+ float targetSkirtLength=.6;
   
  float BodiceSharpness=0.5;
  float BodiceDepth=0.5;
@@ -30,6 +32,7 @@ float rotatetarget = 180;
  float SleevePoofiness=0.5;
 
 boolean showWireframe = false;
+int editmode = 2; //start with the skirt
 
 void init() {
   // trick to make it possible to change the frame properties
@@ -66,7 +69,7 @@ void draw() {
   background(250);
   
   lights();
-  translate(width/2, height/2+displaceY, 0);
+  translate(width/2, displaceY, 0);
   rotateX(PI);
   rotateY(rotateval*PI/180);
 
@@ -78,7 +81,7 @@ void draw() {
     noStroke();
   }
 
-  scale(.7);
+  scale(.6);
 
   //lerpAmt= map(mouseY, height, 0, 0, 1);
   //column_num = floor(map(mouseX, 0, width, 0, tween));
@@ -90,14 +93,16 @@ currSize.render();
   //flats.render(lerpAmt);
   //shoe.render(lerpAmt);
   
-  rotateval = tween(rotatetarget, rotateval);
+  rotateval = tween(rotatetarget, rotateval, .01);
+  SkirtFullness = tween(targetSkirtFullness, SkirtFullness, .04);
+  SkirtLength = tween(targetSkirtLength, SkirtLength, .04);
+  updateGarment();
 }
 
 
-float tween(float target, float val) {
+float tween(float target, float val, float easing) {
   float dx = target - val;
-  float easing = .03;
-  if (abs(dx) > 1) {
+  if (abs(dx) > .05) {
     val+=dx * easing;
   }
   return val;
