@@ -151,7 +151,7 @@ class TweenMesh {
     }
   }
   
-  void save(String name) {
+  void save(String name, String folder) {
     int w = 72*60;
     int h = 72*70;
     
@@ -165,7 +165,7 @@ class TweenMesh {
       w = 72*29;
       h = 72*26;
     }
-    PGraphics pdf = createGraphics(w, h, PDF, name+".pdf");
+    PGraphics pdf = createGraphics(w, h, PDF, folder+"/"+name+".pdf");
     pdf.beginDraw();
     for (int i=0; i<facedata1.length; i++) {
 

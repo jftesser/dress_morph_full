@@ -139,12 +139,12 @@ class Pattern {
    //1mm = 2.83464567pts
    //1in = 72 pts
    
+   String folder = year()+"-"+month()+"-"+day()+"-"+hour()+"-"+minute()+"-"+second();
    
-   
-   tmBodice.save("bodice");
-   tmSkirt.save("skirt");
-   if (areSleevesShown) tmSleeves.save("sleeves");
-   if (isPeplumShown) tmPeplum.save("peplum"); 
+   tmBodice.save("bodice",folder);
+   tmSkirt.save("skirt",folder);
+   if (areSleevesShown) tmSleeves.save("sleeves",folder);
+   if (isPeplumShown) tmPeplum.save("peplum",folder); 
  }
  
  void toggleSleeves() {
