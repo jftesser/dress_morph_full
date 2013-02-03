@@ -59,7 +59,7 @@ sizes[3] = new Garment("8");
 sizes[4] = new Garment("10");
 sizes[5] = new Garment("12");
 
-currSize = sizes[5];
+currSize = sizes[0];
 // test stuff
   updateGarment();
   smooth();
